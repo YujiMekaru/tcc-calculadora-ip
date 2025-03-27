@@ -4,8 +4,8 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="ipAddress"
-            label="Digite o IP"
-            placeholder="Ex.: 193.186.4.202"
+            label="Digite o IP fornecido pela operadora..."
+            placeholder="Ex.: 2001:0db8:85a3:0000::"
             required
           ></v-text-field>
         </v-col>

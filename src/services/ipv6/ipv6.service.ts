@@ -1,8 +1,8 @@
 import { DepartmentService } from "../department/department.service";
 import { Department } from "../department/models/department.model";
-import { Ipv4Subnet, Ipv4Address } from "./models/ipv4-subnet.model";
+import { Ipv6Subnet, Ipv6Address } from "./models/ipv6-subnet.model";
 
-export class Ipv4Service {
+export class Ipv6Service {
     departmentService: DepartmentService;
     departments: Department[];
 
@@ -11,9 +11,9 @@ export class Ipv4Service {
         this.departments = this.departmentService.getDepartmentsFromLocalStorage();
     }
 
-    calculateSubnets(): Ipv4Subnet[]
+    calculateSubnets(): Ipv6Subnet[]
     {
-        const result: Ipv4Subnet[] = [];
+        const result: Ipv6Subnet[] = [];
         this.departments.sort((a, b) => b.hostQty - a.hostQty);
         console.log(this.departments);
         let classCIndex = 0;
@@ -22,21 +22,21 @@ export class Ipv4Service {
             if (department.hostQty <= 254)
             {
                 // utilizar /24, começando de 192.168.0.0/24
-                const startRange: Ipv4Address = {
+                const startRange: Ipv6Address = {
                     octet1: '192',
                     octet2: '168',
                     octet3: classCIndex.toString(),
                     octet4: '1',
                 };
 
-                const endRange: Ipv4Address = {
+                const endRange: Ipv6Address = {
                     octet1: '192',
                     octet2: '168',
                     octet3: classCIndex.toString(),
                     octet4: (department.hostQty).toString(),
                 };
 
-                const toAdd: Ipv4Subnet = {
+                const toAdd: Ipv6Subnet = {
                     department: department,
                     id: department.id,
                     mask: '/24',
@@ -51,7 +51,7 @@ export class Ipv4Service {
             {
                 // utilizar /16, começando de 172.16.0.0/16
                 // implementacao com capacidade de redes com ate 65.024 hosts.
-                const startRange: Ipv4Address = {
+                const startRange: Ipv6Address = {
                     octet1: '172',
                     octet2: classBIndex.toString(),
                     octet3: '0',
@@ -60,14 +60,14 @@ export class Ipv4Service {
 
                 console.log((department.hostQty / 254).toFixed(0));
 
-                const endRange: Ipv4Address = {
+                const endRange: Ipv6Address = {
                     octet1: '192',
                     octet2: classBIndex.toString(),
                     octet3: (department.hostQty / 254).toFixed(0),
                     octet4: (department.hostQty % 254).toString(),
                 };
 
-                const toAdd: Ipv4Subnet = {
+                const toAdd: Ipv6Subnet = {
                     department: department,
                     id: department.id,
                     mask: '/16',

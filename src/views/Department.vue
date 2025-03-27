@@ -15,7 +15,7 @@
 			  </v-col>
 			  <v-col cols="12" md="4">
 				<v-text-field
-				  v-model="newDepartment.machines"
+				  v-model="newDepartment.hostQty"
 				  label="Quantidade de Máquinas"
 				  type="number"
 				  required
@@ -33,7 +33,7 @@
 			  <v-list-item-content>
 				<v-list-item-title>{{ department.name }}</v-list-item-title>
 				<v-list-item-subtitle>
-				  Máquinas: {{ department.machines }}
+				  Máquinas: {{ department.hostQty }}
 				</v-list-item-subtitle>
 			  </v-list-item-content>
 			  <v-list-item-action>
@@ -59,7 +59,7 @@
 					required
 				  ></v-text-field>
 				  <v-text-field
-					v-model="editedDepartment.machines"
+					v-model="editedDepartment.hostQty"
 					label="Quantidade de Máquinas"
 					type="number"
 					required
@@ -83,14 +83,14 @@ import { DepartmentService } from '../services/department/department.service';
 		newDepartment: {
 		  id: 0,
 		  name: '',
-		  machines: 0,
+		  hostQty: 0,
 		},
 		departments: [],
 		editDialog: false,
 		editedDepartment: {
 	      id: 0,
 		  name: '',
-		  machines: 0,
+		  hostQty: 0,
 		},
 		editedIndex: -1,
 		departmentService: new DepartmentService(),
@@ -103,7 +103,7 @@ import { DepartmentService } from '../services/department/department.service';
 			return;
 
 		this.departments = deps.map(dep => {
-			return { id: dep.id, name: dep.name, machines: dep.machines };
+			return { id: dep.id, name: dep.name, hostQty: dep.hostQty };
 		})
 	},
 	methods: {
@@ -113,7 +113,7 @@ import { DepartmentService } from '../services/department/department.service';
 		this.departmentService.addToLocalStorage({ ...this.newDepartment });
 
 		this.departments.push({ ...this.newDepartment });
-		this.newDepartment = { id: 0, name: '', machines: 0 }; // Reset form
+		this.newDepartment = { id: 0, name: '', hostQty: 0 }; // Reset form
 	  },
 	  editDepartment(index) {
 		this.editedIndex = index;

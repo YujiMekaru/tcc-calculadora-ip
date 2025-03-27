@@ -7,7 +7,7 @@
           <!-- <IPInputForm @calculate="handleCalculate" /> -->
   
           <!-- Department IP Range Table -->
-          <IPRangeTable v-if="showTable" />
+          <IPRangeTable v-if="showTable" :subnets="subnets"/>
         </v-card-text>
       </v-card>
     </v-container>
@@ -16,8 +16,7 @@
   <script>
   import IPInputForm from '../components/IPInputForm.vue';
   import IPRangeTable from '../components/IPRangeTable.vue';
-import { Ipv4Service } from '../services/ipv4/ipv4.service';
-// import { Ipv4Subnet } from '../services/ipv4/models/ipv4-subnet.model';
+  import { Ipv4Service } from '../services/ipv4/ipv4.service';
   
   export default {
     components: {
@@ -32,12 +31,13 @@ import { Ipv4Service } from '../services/ipv4/ipv4.service';
       };
     },
     created() {
-
+      this.handleCalculate();
     },
     methods: {
       handleCalculate() {
         this.ipv4Service = new Ipv4Service();
         this.subnets = this.ipv4Service.calculateSubnets();
+        this.showTable = true;
       },
     },
   };
