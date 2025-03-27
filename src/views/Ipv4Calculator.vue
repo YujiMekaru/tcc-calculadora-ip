@@ -4,10 +4,10 @@
         <v-card-title>Calculadora IPv4</v-card-title>
         <v-card-text>
           <!-- IP Input Form -->
-          <IPInputForm @calculate="handleCalculate" />
+          <!-- <IPInputForm @calculate="handleCalculate" /> -->
   
           <!-- Department IP Range Table -->
-          <DepartmentIPRangeTable v-if="showTable" />
+          <IPRangeTable v-if="showTable" />
         </v-card-text>
       </v-card>
     </v-container>
@@ -15,25 +15,29 @@
   
   <script>
   import IPInputForm from '../components/IPInputForm.vue';
-  import DepartmentIPRangeTable from '../components/IPRangeTable.vue';
+  import IPRangeTable from '../components/IPRangeTable.vue';
+import { Ipv4Service } from '../services/ipv4/ipv4.service';
+// import { Ipv4Subnet } from '../services/ipv4/models/ipv4-subnet.model';
   
   export default {
     components: {
       IPInputForm,
-      DepartmentIPRangeTable,
+      IPRangeTable,
     },
     data() {
       return {
         showTable: false,
+        ipv4service: new Ipv4Service(),
+        subnets: [],
       };
     },
+    created() {
+
+    },
     methods: {
-      handleCalculate(ipAddress) {
-        // Here you can add the logic to calculate subnets based on the IP address
-        console.log('Calculating subnets for:', ipAddress);
-  
-        // For now, just show the table
-        this.showTable = true;
+      handleCalculate() {
+        this.ipv4Service = new Ipv4Service();
+        this.subnets = this.ipv4Service.calculateSubnets();
       },
     },
   };

@@ -1,13 +1,13 @@
 <template>
     <v-container>
       <v-card>
-        <v-card-title>Calculadora IPv4</v-card-title>
+        <v-card-title>Calculadora IPv6</v-card-title>
         <v-card-text>
           <!-- IP Input Form -->
           <IPInputForm @calculate="handleCalculate" />
   
           <!-- Department IP Range Table -->
-          <DepartmentIPRangeTable v-if="showTable" />
+          <IPRangeTable v-if="showTable" />
         </v-card-text>
       </v-card>
     </v-container>
@@ -15,12 +15,12 @@
   
   <script>
   import IPInputForm from '../components/IPInputForm.vue';
-  import DepartmentIPRangeTable from '../components/IPRangeTable.vue';
+  import IPRangeTable from '../components/IPRangeTable.vue';
   
   export default {
     components: {
       IPInputForm,
-      DepartmentIPRangeTable,
+      IPRangeTable,
     },
     data() {
       return {

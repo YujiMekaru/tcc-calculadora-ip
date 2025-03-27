@@ -16,28 +16,25 @@
 				<span class="material-icons">home</span>
 				<span class="text">Home</span>
 			</router-link>
-			<router-link to="/about" class="button">
-				<span class="material-icons">description</span>
-				<span class="text">About</span>
+			<router-link to="/department" class="button">
+				<span class="material-icons">business</span>
+				<span class="text">Gerenciar Departamentos</span>
+			</router-link>
+			<router-link to="/ipv4" class="button">
+				<span class="material-icons">filter_4</span>
+				<span class="text">Calculadora IPv4</span>
+			</router-link>
+			<router-link to="/ipv6" class="button">
+				<span class="material-icons">filter_6</span>
+				<span class="text">Calculadora IPv6</span>
 			</router-link>
 			<router-link to="/team" class="button">
-				<span class="material-icons">group</span>
-				<span class="text">Team</span>
-			</router-link>
-			<router-link to="/contact" class="button">
-				<span class="material-icons">email</span>
-				<span class="text">Contact</span>
+				<span class="material-icons">description</span>
+				<span class="text">Resultados</span>
 			</router-link>
 		</div>
 
 		<div class="flex"></div>
-		
-		<div class="menu">
-			<router-link to="/settings" class="button">
-				<span class="material-icons">settings</span>
-				<span class="text">Settings</span>
-			</router-link>
-		</div>
 	</aside>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-	<main id="Home-page">
+	<main id="home-page">
 		<h1>Home</h1>
-		<p>This is the home page</p>
+		<p>Página explicando sobre o software.</p>
 	</main>
 </template>
