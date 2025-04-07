@@ -9,8 +9,5 @@ export interface Ipv6Subnet {
 }
 
 export interface Ipv6Address {
-    octet1: string;
-    octet2: string;
-    octet3: string;
-    octet4: string;
+    group: string[];
 }

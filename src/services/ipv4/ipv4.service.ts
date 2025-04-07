@@ -33,7 +33,8 @@ export class Ipv4Service {
                     octet1: '192',
                     octet2: '168',
                     octet3: classCIndex.toString(),
-                    octet4: (department.hostQty).toString(),
+                    // octet4: (department.hostQty).toString(),
+                    octet4: '254'
                 };
 
                 const toAdd: Ipv4Subnet = {
@@ -61,10 +62,12 @@ export class Ipv4Service {
                 console.log((department.hostQty / 254).toFixed(0));
 
                 const endRange: Ipv4Address = {
-                    octet1: '192',
+                    octet1: '172',
                     octet2: classBIndex.toString(),
-                    octet3: (department.hostQty / 254).toFixed(0),
-                    octet4: (department.hostQty % 254).toString(),
+                    // octet3: (department.hostQty / 254).toFixed(0),
+                    // octet4: (department.hostQty % 254).toString(),
+                    octet3: '255',
+                    octet4: '255',
                 };
 
                 const toAdd: Ipv4Subnet = {

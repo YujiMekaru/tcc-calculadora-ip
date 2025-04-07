@@ -7,7 +7,7 @@
           <IPInputForm @calculate="handleCalculate" />
   
           <!-- Department IP Range Table -->
-          <IPRangeTable v-if="showTable" />
+          <IPv6RangeTable v-if="showTable" :subnets="subnets"/>
         </v-card-text>
       </v-card>
     </v-container>
@@ -15,12 +15,13 @@
   
   <script>
   import IPInputForm from '../components/IPInputForm.vue';
-  import IPRangeTable from '../components/IPRangeTable.vue';
+  import IPv6RangeTable from '../components/IPv6RangeTable.vue';
+  import { Ipv6Service } from '../services/ipv6/ipv6.service';
   
   export default {
     components: {
       IPInputForm,
-      IPRangeTable,
+      IPv6RangeTable,
     },
     data() {
       return {
@@ -29,10 +30,9 @@
     },
     methods: {
       handleCalculate(ipAddress) {
-        // Here you can add the logic to calculate subnets based on the IP address
-        console.log('Calculating subnets for:', ipAddress);
-  
-        // For now, just show the table
+        this.ipv6Service = new Ipv6Service();
+        this.subnets = this.ipv6Service.calculateSubnets(ipAddress);
+        console.log(this.subnets);
         this.showTable = true;
       },
     },
